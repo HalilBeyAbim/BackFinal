@@ -11,6 +11,7 @@ namespace BackFinalEdu.DAL
             
         }
         public DbSet<Slider> Sliders { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
     }
     
     

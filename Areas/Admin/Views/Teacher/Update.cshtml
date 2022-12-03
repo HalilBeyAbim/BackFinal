@@ -1,5 +1,4 @@
-﻿@model SlideImageUpdateModel
-
+﻿@model UpdateTeacherModel
 <style>
     .sliderImage {
         width: 150px !important;
@@ -16,9 +15,9 @@
                 <h4 class="card-title">Create category</h4>
                 <form class="forms-sample" method="post" asp-action="Update" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label asp-for="Photo">Photo</label>
-                        <input asp-for="Photo" class="form-control" placeholder="Photo" accept="image/*">
-                        <span asp-validation-for="Photo" class="text-danger"></span>
+                        <label asp-for="Image">Image</label>
+                        <input asp-for="Image" class="form-control" placeholder="Image" accept="image/*">
+                        <span asp-validation-for="Image" class="text-danger"></span>
                     </div>
 
                     <div class="imagesTable">
@@ -26,16 +25,35 @@
                             <thead>
                                 <tr>
                                     <th>Image</th>
-                                    <th>Action</th>
+                                    <th>Name</th>
+                                    <th>Profession</th>
+                                    <th>Description</th>
+                                    <th>Degree</th>
+                                    <th>Experience</th>
+                                    <th>Hobbies</th>
+                                    <th>Faculty</th>
+                                    <th>Mail</th>
+                                    <th>Phone</th>
+                                    <th>Skype</th>
+                                    <th>Facebook</th>
+                                    <th>Twitter</th>
+                                    <th>Pinterest</th>
+                                    <th>Dribble</th>
+                                    <th>Language</th>
+                                    <th>TeamLeader</th>
+                                    <th>Devolopment</th>
+                                    <th>Design</th>
+                                    <th>Innovation</th>
+                                    <th>Communication</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>
-                                        <img class="sliderImage" src="~/assets/img/slider/@Model.Image">
+                                        <img class="sliderImage" src="~/assets/img/teacher/@Model.Image">
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-danger removeProductImage" data-id="@Model.Id">Delete</button>
+                                        <button type="button" class="btn btn-danger removeProductImage" asp-route-id="@Model.Id">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -68,4 +86,3 @@
         </div>
     </div>
 </div>
-

@@ -19,6 +19,7 @@ namespace BackFinalEdu
 
             Constants.RootPath = builder.Environment.WebRootPath;
             Constants.SliderPath = Path.Combine(Constants.RootPath, "assets", "img", "slider");
+            Constants.TeacherPath = Path.Combine(Constants.RootPath, "assets", "img", "teacher");
 
             var app = builder.Build();
 
