@@ -1,0 +1,61 @@
+﻿@using BackFinalEdu.DAL.Entities
+@model List<Slider>
+
+<style>
+    .sliderImage {
+        width: 150px !important;
+        height: 150px !important;
+        object-fit: contain !important;
+        border-radius: 0px !important;
+    }
+</style>
+
+<div class="col-lg-11 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Basic Table</h4>
+            <p class="card-description">
+                Add class <code>.table</code>
+            </p>
+            <div class="table-responsive">
+                <table class="table">
+                    <a asp-controller="SliderImage" asp-action="Create" class="btn btn-primary">Create</a>
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>ButtonLink</th>
+                            <th>ButtonText</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var slider in Model)
+                        {
+                            <tr>
+                                <td >
+                                    <img class="sliderImage" src="~/assets/img/slider/@slider.Image">
+                                </td>
+                                <td> @slider.Title </td>
+                                <td> @slider.Description </td>
+                                <td>
+                                    <a href="@slider.ButtonLink" target="_blank" class="btn btn-success text-nowrap">@slider.ButtonLink</a>
+
+                                </td>
+                                <td> @slider.ButtonText </td>
+                                <td class="">
+                                    <form class="forms-sample text-nowrap " method="post" asp-action="Delete" asp-route-id="@slider.id">
+                                        <button type="submit" class="btn btn-danger mx-1">Delete</button>
+                                        <button class="btn btn-primary mx-1">Detail</button>
+                                        <a asp-action="update" asp-route-id="@slider.id" class="btn btn-warning mx-1">Update</a>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+﻿@model SlideImageUpdateModel
+
+<style>
+    .sliderImage {
+        width: 150px !important;
+        height: 150px !important;
+        object-fit: contain !important;
+        border-radius: 0px !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create category</h4>
+                <form class="forms-sample" method="post" asp-action="Update" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Photo">Name</label>
+                        <input asp-for="Photo" class="form-control" placeholder="Name" accept="image/*">
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div>
+
+                    <div class="imagesTable">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img class="sliderImage" src="~/assets/img/slider/@Model.Image">
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger removeProductImage" data-id="@Model.Id">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Title">Title</label>
+                        <input asp-for="Title" class="form-control" placeholder="Enter the slider title...">
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description">Description</label>
+                        <input asp-for="Description" class="form-control" placeholder="Enter the slider title...">
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ButtonLink">ButtonLink</label>
+                        <input asp-for="ButtonLink" class="form-control" placeholder="Enter the slider title...">
+                        <span asp-validation-for="ButtonLink" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ButtonText">ButtonText</label>
+                        <input asp-for="ButtonText" class="form-control" placeholder="Enter the slider title...">
+                        <span asp-validation-for="ButtonText" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light" asp-action="Index">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
