@@ -20,7 +20,7 @@ namespace BackFinalEdu
             Constants.RootPath = builder.Environment.WebRootPath;
             Constants.SliderPath = Path.Combine(Constants.RootPath, "assets", "img", "slider");
             Constants.TeacherPath = Path.Combine(Constants.RootPath, "assets", "img", "teacher");
-
+            Constants.BlogPath = Path.Combine(Constants.RootPath, "assets", "img", "blog");
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

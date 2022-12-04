@@ -1,0 +1,46 @@
+﻿@using BackFinalEdu.DAL.Entities
+@model List<Blog>
+
+
+<div class="row  col-lg-12">
+
+    <div class="col-lg-12 col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Blogs</h4>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <a asp-controller="Blog" asp-action="Create" class="btn btn-primary text-white">Create</a>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Actions</th>
+                                <th>Name</th>
+                                <th>Profession</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var blog in Model)
+                            {
+                                <tr>
+                                    <td><img style="object-fit:contain; width:80px; height:80px" src="~/assets/img/blog/@blog.Image" /></td>
+                                    <td>
+                                        <a asp-controller="Blog" asp-action="Update" asp-route-id="@blog.id" class="btn btn-success text-white">Update</a>
+                                        <form class="forms-sample" method="post" asp-action="Delete" asp-route-id="@blog.id">
+                                            <button type="submit" class="btn btn-danger mr-2" asp-action="Delete" asp-route-id="@blog.id">Delete</button>
+                                        </form>
+
+                                    </td>
+                                    <td>@blog.Author</td>
+                                    <td><label class="badge badge">@blog.Date</label></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
