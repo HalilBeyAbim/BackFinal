@@ -1,0 +1,80 @@
+﻿@model CourseUpdateModel
+<div class="row col-lg-12">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Update Course</h4>
+                <form class="forms-sample" method="post" asp-action="update" enctype="multipart/form-data">
+                    <div asp-validation-summary="All"></div>
+                    <div class="form-group">
+                        <label asp-for="Image">Image</label>
+                        <input asp-for="Image" class="form-control" placeholder="Image" accept="image/*">
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AboutCourse">Title</label>
+                        <input asp-for="AboutCourse" class="form-control" placeholder="Title">
+                        <span asp-validation-for="AboutCourse" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description">Description</label>
+                        <input asp-for="Description" class="form-control" placeholder="Description">
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AboutCourse">About</label>
+                        <input asp-for="AboutCourse" class="form-control" placeholder="About">
+                        <span asp-validation-for="AboutCourse" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="HowToApply">Apply Content</label>
+                        <input asp-for="HowToApply" class="form-control" placeholder="HowToApply">
+                        <span asp-validation-for="HowToApply" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Certification">Certification Content</label>
+                        <input asp-for="Certification" class="form-control" placeholder="Certification Content">
+                        <span asp-validation-for="Certification" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Duration">Duration</label>
+                        <input asp-for="Duration" class="form-control" placeholder="Duration">
+                        <span asp-validation-for="Duration" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClassDuration">Class Duration</label>
+                        <input asp-for="ClassDuration" class="form-control" placeholder="Class Duration">
+                        <span asp-validation-for="ClassDuration" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SkillLevel">Skill Level</label>
+                        <input asp-for="SkillLevel" class="form-control" placeholder="Skill Level">
+                        <span asp-validation-for="SkillLevel" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Language">Language</label>
+                        <input asp-for="Language" class="form-control" placeholder="Language">
+                        <span asp-validation-for="Language" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StudentCount">Student Count</label>
+                        <input asp-for="StudentCount" class="form-control" placeholder="Skill Level">
+                        <span asp-validation-for="SkillLevel" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Assesments">Assesments</label>
+                        <input asp-for="Assesments" class="form-control" placeholder="Assesment">
+                        <span asp-validation-for="Assesments" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CategoryId">Parent Categories</label>
+                        <select asp-for="CategoryId" asp-items="Model.Categories" class="form-control" placeholder="Parent Categories"></select>
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light" asp-action="index">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

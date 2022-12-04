@@ -1,0 +1,101 @@
+﻿@model CourseCreateModel
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title"> Create category</h4>
+                <form class="forms-sample" method="post" asp-action="Create" enctype="multipart/form-data">
+                    <div asp-validation-summary="All"></div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label asp-for="Photo">Photo</label>
+                            <input asp-for="Photo" class="form-control" placeholder="Photo" accept="image/*">
+                            <span asp-validation-for="Photo" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Title">Title</label>
+                        <input asp-for="Title" class="form-control" placeholder="Title">
+                        <span asp-validation-for="Title" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description">Description</label>
+                        <input asp-for="Description" class="form-control" placeholder="Description">
+                        <span asp-validation-for="Description" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AboutCourse">About</label>
+                        <input asp-for="AboutCourse" class="form-control" placeholder="About">
+                        <span asp-validation-for="AboutCourse" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ApplyDetails">Apply Content</label>
+                        <input asp-for="ApplyDetails" class="form-control" placeholder="Apply Content">
+                        <span asp-validation-for="ApplyDetails" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ClassDuration">Class Duration</label>
+                        <input asp-for="ClassDuration" class="form-control" placeholder="Class Duration">
+                        <span asp-validation-for="ClassDuration" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Duration">Duration</label>
+                        <input asp-for="Duration" class="form-control" placeholder="Duration">
+                        <span asp-validation-for="Duration" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SkillLevel">Skill Level</label>
+                        <input asp-for="SkillLevel" class="form-control" placeholder="Skill Level">
+                        <span asp-validation-for="SkillLevel" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Language">Language</label>
+                        <input asp-for="Language" class="form-control" placeholder="Language">
+                        <span asp-validation-for="Language" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StudentCount">Student Count</label>
+                        <input asp-for="StudentCount" class="form-control" placeholder="Student Count">
+                        <span asp-validation-for="SkillLevel" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Duration">Duration</label>
+                        <input asp-for="Duration" class="form-control" placeholder="Duration">
+                        <span asp-validation-for="Duration" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Assesments">Assesments</label>
+                        <input asp-for="Assesments" class="form-control" placeholder="Assesments">
+                        <span asp-validation-for="Assesments" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CategoryId">Category</label>
+                        <select asp-for="CategoryId" asp-items="@Model.Categories" class="form-control" placeholder="Category"></select>
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StartTime">Start Time</label>
+                        <input asp-for="StartTime" class="form-control" placeholder="Start Time">
+                        <span asp-validation-for="StartTime" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EndTime">End Time</label>
+                        <input asp-for="EndTime" class="form-control" placeholder="End Time">
+                        <span asp-validation-for="EndTime" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SertificationContent">Sertification Content</label>
+                        <input asp-for="SertificationContent" class="form-control" placeholder="Sertification Content">
+                        <span asp-validation-for="SertificationContent" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light" asp-action="index">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
