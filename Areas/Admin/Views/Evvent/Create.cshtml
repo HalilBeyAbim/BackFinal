@@ -8,8 +8,8 @@
                 <form class="forms-sample" method="post" asp-action="create" enctype="multipart/form-data" en>
                     <div asp-validation-summary="All"></div>
                     <div class="form-group">
-                        <label asp-for="Photo">Image</label>
-                        <input asp-for="Photo" class="form-control" placeholder="Image">
+                        <label asp-for="Photo">Photo</label>
+                        <input asp-for="Photo" class="form-control" placeholder="Photo" accept="image/*">
                         <span asp-validation-for="Photo" class="text-danger"></span>
                     </div>
                     <div class="form-group">
