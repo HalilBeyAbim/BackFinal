@@ -15,8 +15,12 @@ namespace BackFinalEdu.Controllers
         public IActionResult Index()
         {
             var Sliders = _Dbcontext.Sliders.ToList();
+            var courses =  _Dbcontext.Courses.Where(x => !x.IsDeleted).ToList();
+            var blogs = _Dbcontext.Blogs.Where(x => !x.IsDeleted).ToList();
             var homeViewModel = new HomeViewModel { 
-            sliders =  Sliders           
+            sliders =  Sliders,
+                Courses = courses,
+                Blogs = blogs
             };
             return View(homeViewModel);
         }
