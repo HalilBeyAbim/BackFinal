@@ -7,7 +7,6 @@ namespace BackFinalEdu.Areas.Admin.Models
     public class CourseCreateModel
     {
         public List<SelectListItem>? Categories { get; set; }
-
         public string? Image { get; set; }
         public IFormFile Photo { get; set; }
         public int CategoryId { get; set; }

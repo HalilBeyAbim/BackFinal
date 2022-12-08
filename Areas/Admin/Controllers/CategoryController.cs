@@ -22,6 +22,7 @@ namespace BackFinalEdu.Areas.Admin.Controllers
         {
             return View();
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CategoryCreateModel model)
@@ -30,6 +31,7 @@ namespace BackFinalEdu.Areas.Admin.Controllers
             {
                 return View();
             }
+            
             var existCategory = await _Dbcontext.Categories.Where(c => !c.IsDeleted).ToListAsync();
 
             if (existCategory.Any(c => c.Name.ToLower().Equals(model.Name.ToLower())))
@@ -37,6 +39,7 @@ namespace BackFinalEdu.Areas.Admin.Controllers
                 ModelState.AddModelError("Name", "This category already exist");
                 return View();
             }
+            
             var newCategory = new Category
             {
                 Name = model.Name
@@ -44,24 +47,20 @@ namespace BackFinalEdu.Areas.Admin.Controllers
 
             await _Dbcontext.Categories.AddAsync(newCategory);
             await _Dbcontext.SaveChangesAsync();
-
             return RedirectToAction(nameof(Index));
-
         }
-
         public async Task<IActionResult> Update(int? id)
         {
             if (id is null) return NotFound();
             var category = await _Dbcontext.Categories.FindAsync(id);
+            
             if (category.id != id) return BadRequest();
-
             var existCategory = new CategoryUpdateModel
             {
                 Id = category.id,
                 Name = category.Name
             };
             return View(existCategory);
-
         }
 
         [HttpPost]
@@ -75,7 +74,6 @@ namespace BackFinalEdu.Areas.Admin.Controllers
             {
                 return View();
             }
-
             var category = await _Dbcontext.Categories.FindAsync(id);
 
             if (category is null) return NotFound();
@@ -104,7 +102,6 @@ namespace BackFinalEdu.Areas.Admin.Controllers
             await _Dbcontext.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
-
         }
     }
 }

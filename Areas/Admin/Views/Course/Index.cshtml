@@ -23,20 +23,16 @@
                                     <td>
                                         <img style="border-radius:0px; object-fit:contain; height:100px; width:100px;" src="~/assets/img/course/@course.Image" alt="image">
                                     </td>
-
                                     <td>@course.Title</td>
-
                                     <td>
                                         @course.Category.Name
                                     </td>
-
                                     <td>
                                         <form asp-action="delete" method="post" class="form-sample" asp-route-id="@course.id">
                                             <a class="btn btn-success" asp-action="update" asp-route-id="@course.id">Update</a>
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
                                     </td>
-
                                 </tr>
                             }
                         </tbody>

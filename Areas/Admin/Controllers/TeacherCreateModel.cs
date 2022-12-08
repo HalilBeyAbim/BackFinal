@@ -2,6 +2,6 @@
 {
     public class TeacherCreateModel
     {
-        public object Image { get; internal set; }
+      public object Image { get; internal set; }
     }
 }

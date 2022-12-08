@@ -22,6 +22,8 @@ namespace BackFinalEdu
             Constants.TeacherPath = Path.Combine(Constants.RootPath, "assets", "img", "teacher");
             Constants.BlogPath = Path.Combine(Constants.RootPath, "assets", "img", "blog");
             Constants.CoursePath = Path.Combine(Constants.RootPath, "assets", "img", "course");
+            Constants.EventPath = Path.Combine(Constants.RootPath, "assets", "img", "event");
+            Constants.SpeakerPath = Path.Combine(Constants.RootPath, "assets", "img", "speaker");
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

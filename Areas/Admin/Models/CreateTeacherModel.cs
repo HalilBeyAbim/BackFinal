@@ -4,7 +4,7 @@ namespace BackFinalEdu.Areas.Admin.Models
 {
     public class CreateTeacherModel
     {
-        public  IFormFile Image { get; set; }
+        public IFormFile Image { get; set; }
         public string Name { get; set; }
         public string Profession { get; set; }
         public string Description { get; set; }
@@ -25,8 +25,5 @@ namespace BackFinalEdu.Areas.Admin.Models
         public byte Design { get; set; }
         public byte Innovation { get; set; }
         public byte Communication { get; set; }
-    }
-    
-       
+    }    
 }
-

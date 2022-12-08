@@ -1,0 +1,59 @@
+﻿@model EventCreateViewModel
+
+<div class="row col-lg-10">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create Event</h4>
+                <form class="forms-sample" method="post" asp-action="create" enctype="multipart/form-data" en>
+                    <div asp-validation-summary="All"></div>
+                    <div class="form-group">
+                        <label asp-for="Photo">Image</label>
+                        <input asp-for="Photo" class="form-control" placeholder="Image">
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Title">Title</label>
+                        <input asp-for="Title" class="form-control" placeholder="Title">
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Content">Content</label>
+                        <input asp-for="Content" class="form-control" placeholder="Content">
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Location">Location</label>
+                        <input asp-for="Location" class="form-control" placeholder="Adress">
+                        <span asp-validation-for="Location" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SpeakerIds">Speakers</label>
+                        <select asp-for="SpeakerIds" asp-items="Model.Speakers" class="form-control" placeholder="Speakers"></select>
+                        <span asp-validation-for="SpeakerIds" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StartDate" class="form-label">Start Time *</label>
+                        <input asp-for="StartDate" asp-format="{0:yyyy-MM-ddTHH:mm}"
+                         value="@DateTime.UtcNow.AddHours(4).AddDays(1).ToString("yyyy-MM-dd 00:00")"
+                         min="@DateTime.UtcNow.AddHours(4).AddDays(1).ToString("yyyy-MM-dd 00:00")"
+                         max="@DateTime.UtcNow.AddHours(4).AddDays(30).ToString("yyyy-MM-dd 23:59")"
+                         class="form-control" required>
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EndDate" class="form-label">End Time *</label>
+                        <input asp-for="EndDate" asp-format="{0:yyyy-MM-ddTHH:mm}"
+                         value="@DateTime.UtcNow.AddHours(4).AddDays(1).ToString("yyyy-MM-dd 23:59")"
+                         min="@DateTime.UtcNow.AddHours(4).AddDays(1).ToString("yyyy-MM-dd 00:00")"
+                         max="@DateTime.UtcNow.AddHours(4).AddDays(30).ToString("yyyy-MM-dd 23:59")"
+                         class="form-control" required>
+                        <span asp-validation-for="EndDate" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light" asp-action="index">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

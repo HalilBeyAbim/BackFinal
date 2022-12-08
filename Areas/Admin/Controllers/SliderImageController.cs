@@ -11,7 +11,6 @@ namespace BackFinalEdu.Areas.Admin.Controllers
     public class SliderImageController : BaseController
     {
         private readonly AppDbContext _DbContext;
-
         public SliderImageController(AppDbContext dbContext)
         {
             _DbContext = dbContext;
@@ -38,6 +37,7 @@ namespace BackFinalEdu.Areas.Admin.Controllers
                 ModelState.AddModelError("Photo", "Please select image type");
                 return View();
             }
+            
             if (!model.Photo.IsAllowedSize(10))
             {
                 ModelState.AddModelError("Photo", "Max size 2mb");
@@ -58,17 +58,14 @@ namespace BackFinalEdu.Areas.Admin.Controllers
             await _DbContext.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
         public async Task<IActionResult> Update(int? id)
         {
             if (id is null) return BadRequest();
-
             var slider = await _DbContext.Sliders
                 .Where(sl => sl.id == id)
                 .FirstOrDefaultAsync();
 
             if (slider is null) return NotFound();
-
             var sliderViewModel = new SlideImageUpdateModel
             {
                 Id = slider.id,
@@ -87,7 +84,6 @@ namespace BackFinalEdu.Areas.Admin.Controllers
         public async Task<IActionResult> Update(int? id, SlideImageUpdateModel model)
         {
             if (id is null) return BadRequest();
-
             var slider = await _DbContext.Sliders
                 .Where(sl => sl.id == id)
                 .FirstOrDefaultAsync();
@@ -125,16 +121,12 @@ namespace BackFinalEdu.Areas.Admin.Controllers
 
                 var unicalName = await model.Photo.Generatefile(Constants.SliderPath);
                 slider.Image = unicalName;
-
             }
-
             slider.Title = model.Title;
             slider.Description = model.Description;
             slider.ButtonText = model.ButtonText;
             slider.ButtonLink = model.ButtonLink;
-
             await _DbContext.SaveChangesAsync();
-
             return RedirectToAction(nameof(Index));
         }
 

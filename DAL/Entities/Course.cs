@@ -18,7 +18,5 @@
         public string Language { get; set; }
         public int StudentCount { get; set; }
         public string Assesments { get; set; }
-        
-
     }
 }

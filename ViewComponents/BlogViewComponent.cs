@@ -7,7 +7,6 @@ namespace BackFinalEdu.ViewComponents
     public class BlogViewComponent : ViewComponent
     {
         private readonly AppDbContext _Dbcontext;
-
         public BlogViewComponent(AppDbContext dbcontext)
         {
             _Dbcontext = dbcontext;

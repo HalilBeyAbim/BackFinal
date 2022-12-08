@@ -7,6 +7,7 @@
         public static string TeacherPath;
         public static string BlogPath;
         public static string CoursePath;
-
+        public static string EventPath;
+        public static string SpeakerPath;
     }
 }

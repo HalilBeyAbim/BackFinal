@@ -18,10 +18,7 @@ namespace BackFinalEdu.Controllers
             var homeViewModel = new HomeViewModel { 
             sliders =  Sliders           
             };
-
-
             return View(homeViewModel);
-
         }
     }
 }

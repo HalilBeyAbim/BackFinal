@@ -29,7 +29,6 @@ namespace BackFinalEdu.Areas.Admin.Controllers
             {
                 new SelectListItem("Select Category" , "0")
             };
-
             categories.ForEach(c => categoryListItem.Add(new SelectListItem(c.Name, c.id.ToString())));
             var model = new CourseCreateModel
             {
@@ -37,20 +36,20 @@ namespace BackFinalEdu.Areas.Admin.Controllers
             };
             return View(model);
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CourseCreateModel model)
         {
             var categories = await _Dbcontext.Categories.Where(c => !c.IsDeleted).Include(c => c.Courses).ToListAsync();
+            
             if (!ModelState.IsValid) return View(model);
-
             var categoryListItem = new List<SelectListItem>
              {
                  new SelectListItem("Parent Category Secin", "0")
              };
-
+            
             categories.ForEach(c => categoryListItem.Add(new SelectListItem(c.Name, c.id.ToString())));
-
             var viewModel = new CourseCreateModel
             {
                 Categories = categoryListItem
@@ -68,7 +67,6 @@ namespace BackFinalEdu.Areas.Admin.Controllers
                 ModelState.AddModelError("Image", "Image can contain max 10mb ..!");
                 return View(model);
             }
-
             var unicalName = await model.Photo.Generatefile(Constants.CoursePath);
 
             if (model.CategoryId == 0)
@@ -103,10 +101,11 @@ namespace BackFinalEdu.Areas.Admin.Controllers
         public async Task<IActionResult> Update(int? id)
         {
             if (id is null) return NotFound();
-
             var category = await _Dbcontext.Categories.Where(c => !c.IsDeleted).ToListAsync();
+            
             if (category is null) return NotFound();
             var course = await _Dbcontext.Courses.Where(c => !c.IsDeleted && c.id == id).Include(c => c.Category).FirstOrDefaultAsync();
+            
             if (course is null) return NotFound();
 
             if (course.id != id) return BadRequest();
@@ -126,13 +125,8 @@ namespace BackFinalEdu.Areas.Admin.Controllers
                 ClassDuration = course.ClassDuration,
                 Language = course.Language,
                 Categories = selectedCategories,
-
-
-
             };
             return View(courseUpdateViewModel);
-
-
         }
 
         [HttpPost]
@@ -140,11 +134,15 @@ namespace BackFinalEdu.Areas.Admin.Controllers
         public async Task<IActionResult> Update(int? id, CourseUpdateModel model)
         {
             if (!ModelState.IsValid) return View(model);
+            
             if (id is null) return NotFound();
             var categories = await _Dbcontext.Categories.Where(c => !c.IsDeleted).ToListAsync();
+            
             if (categories is null) return NotFound();
             var course = await _Dbcontext.Courses.Where(c => !c.IsDeleted && c.id == id).Include(c => c.Category).FirstOrDefaultAsync();
+            
             if (course is null) return NotFound();
+            
             if (model.Image != null)
             {
                 if (!ModelState.IsValid)
@@ -155,34 +153,27 @@ namespace BackFinalEdu.Areas.Admin.Controllers
                     });
                 }
 
-
                 if (!model.Image.IsImage())
                 {
                     ModelState.AddModelError("Image", "Picture must be choosing..!");
                     return View(model);
                 }
 
-
                 if (!model.Image.IsAllowedSize(50))
                 {
-                    ModelState.AddModelError("Image", "Şəklin ölçüsü maksimum 20mb ola bilər..!");
+                    ModelState.AddModelError("Image", "Image size can be maximum 20mb..!");
                     return View(new CourseUpdateModel
                     {
                         Photo = course.Image
                     });
                 }
-
-
-
                 var path = Path.Combine(Constants.RootPath, "img", "course", course.Image);
 
                 if (System.IO.File.Exists(path))
                     System.IO.File.Delete(path);
-
                 var unicalName = await model.Image.Generatefile(Constants.CoursePath);
                 course.Image = unicalName;
             }
-
                 var selectedCategory = new CourseUpdateModel
                 {
                     CategoryId = model.CategoryId,
@@ -201,22 +192,18 @@ namespace BackFinalEdu.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             
         }
-
-
         public async Task<IActionResult> Delete(int? id)
         {
             if (id is null) return NotFound();
-
             var course = await _Dbcontext.Courses
-                .FirstOrDefaultAsync(x => x.id == id && !x.IsDeleted);
+            .FirstOrDefaultAsync(x => x.id == id && !x.IsDeleted);
 
             if (course is null) return NotFound();
 
             if (course.id != id) return BadRequest();
-
             var path = Path.Combine(Constants.RootPath, "assets", "img", "course", course.Image);
-
             var result = System.IO.File.Exists(path);
+            
             if (result)
             {
                 System.IO.File.Delete(path);

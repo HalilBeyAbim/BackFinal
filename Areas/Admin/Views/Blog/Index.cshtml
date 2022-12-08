@@ -8,7 +8,6 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Blogs</h4>
-
                 <div class="table-responsive">
                     <table class="table">
                         <a asp-controller="Blog" asp-action="Create" class="btn btn-primary text-white">Create</a>
@@ -30,13 +29,11 @@
                                         <form class="forms-sample" method="post" asp-action="Delete" asp-route-id="@blog.id">
                                             <button type="submit" class="btn btn-danger mr-2" asp-action="Delete" asp-route-id="@blog.id">Delete</button>
                                         </form>
-
                                     </td>
                                     <td>@blog.Author</td>
                                     <td><label class="badge badge">@blog.Date</label></td>
                                 </tr>
                             }
-
                         </tbody>
                     </table>
                 </div>

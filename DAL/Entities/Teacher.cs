@@ -23,7 +23,5 @@
         public byte Design { get; set; }
         public byte Innovation { get; set; }
         public byte Communication { get; set; }
-        
-
     }
 }

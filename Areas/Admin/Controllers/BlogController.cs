@@ -30,16 +30,19 @@ namespace BackFinalEdu.Areas.Admin.Controllers
         public async Task<IActionResult> Create(CreateBlogModel model)
         {
             if (!ModelState.IsValid) return View();
+            
             if (!model.Image.IsImage())
             {
                 ModelState.AddModelError("Image", "Please select image type");
                 return View();
             }
+            
             if (!model.Image.IsAllowedSize(10))
             {
                 ModelState.AddModelError("Image", "Max size 2mb");
                 return View();
             }
+            
             var unicalName = await model.Image.Generatefile(Constants.BlogPath);
             var blog = new Blog
             {
@@ -57,6 +60,7 @@ namespace BackFinalEdu.Areas.Admin.Controllers
         {
             if (id == null) return NotFound();
             var blog = await _Dbcontext.Blogs.FindAsync(id);
+            
             if (blog == null) return NotFound();
             var model = new UpdateBlogModel
             {
@@ -67,12 +71,12 @@ namespace BackFinalEdu.Areas.Admin.Controllers
             };
             return View(model);
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
-
             var blog = await _Dbcontext.Blogs.FindAsync(id);
 
             if (blog.id == null) BadRequest();
@@ -82,10 +86,7 @@ namespace BackFinalEdu.Areas.Admin.Controllers
                 System.IO.File.Delete(path);
 
             _Dbcontext.Blogs.Remove(blog);
-
             await _Dbcontext.SaveChangesAsync();
-
-
             return RedirectToAction(nameof(Index));
         }
     }
